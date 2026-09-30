@@ -9,19 +9,19 @@ resources:
       tasks:
         - task_key: load_bronze
           notebook_task:
-            notebook_path: /load_bronze
+            notebook_path: load_bronze
             source: GIT
         - task_key: load_silver
           depends_on:
             - task_key: load_bronze
           notebook_task:
-            notebook_path: /load_silver
+            notebook_path: load_silver
             source: GIT
         - task_key: load_gold
           depends_on:
             - task_key: load_silver
           notebook_task:
-            notebook_path: /load_gold
+            notebook_path: load_gold
             source: GIT
       queue:
         enabled: true
