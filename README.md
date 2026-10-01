@@ -112,7 +112,7 @@ The script creates:
 
 The job is defined in `NEY_YORK_TAXI_Job.yml` as a **Databricks Asset Bundle (DAB)**. To install/create it:
 
-### Option C: The simplest in UI
+### Option A: The simplest way in UI
 
 If you are not using DAB/CLI, you can create the job manually:
 
@@ -160,18 +160,11 @@ If you are not using DAB/CLI, you can create the job manually:
 
 The job accepts the following parameters (defined in `NEY_YORK_TAXI_Job.yml`):
 
-| Parameter      | Type   | Required | Default value           | Description |
-|----------------|--------|----------|-------------------------|-------------|
-| `date_of_data` | string | yes      | `""`                    | Date in `YYYY-MM-DD` format. Based on this date, the pipeline downloads and processes data for the whole month (e.g. `2026-06-30` → data for June 2026). |
-| `run_id`       | string | no       | `"{{job.run_id}}"`      | Identifier of the current job run. By default it is filled automatically by Databricks. It is stored in the Silver table as `task_id`. |
-
-### Additional parameter in `load_silver.ipynb`
-
-The `load_silver.ipynb` notebook has an additional widget `reset_checkpoint`:
-
-| Parameter         | Type    | Required | Default value | Description |
-|-------------------|---------|----------|---------------|-------------|
-| `reset_checkpoint`| boolean | no       | `False`       | If `True`, deletes the checkpoint directory before starting the stream (useful for a full reload of a month). |
+| Parameter         | Type    | Required | Default value             | Description |
+|-------------------|---------|----------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `date_of_data`    | string  | yes      | `""`                      | Date in `YYYY-MM-DD` format. Based on this date, the pipeline downloads and processes data for the whole month (e.g. `2026-06-30` → data for June 2026). |
+| `run_id`          | string  | no       | `"{{job.run_id}}"`        | Identifier of the current job run. By default it is filled automatically by Databricks. It is stored in the Silver table as `task_id`.                   |
+| `reset_checkpoint`| boolean | yes      | `False`                   | If `True`, deletes the checkpoint directory before starting the stream (useful for a full reload of a month). |
 
 This parameter is currently not passed from the job level — when triggered from the UI it uses the default value `False`.
 
