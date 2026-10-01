@@ -176,13 +176,13 @@ After the job (`NEW_YORK_TAXI_Job`) is installed, follow the steps below to run 
 
 ### Step 1: Open the job
 
-1. In the Databricks UI, go to **Workflows → Jobs**.
+1. In the Databricks UI, go to **Workflows → Jobs & Pipelines**.
 2. Find and click the job named **NEW_YORK_TAXI_Job**.
 
 ### Step 2: Fill in the input parameters
 
 1. In the upper-right corner of the job screen, click the arrow next to the **Run now** button.
-2. Select **Run now with parameters**.
+2. Select **Run now with different settings**.
 3. In the parameters dialog, fill in the field:
 
    - **Key**: `date_of_data`
@@ -190,11 +190,13 @@ After the job (`NEW_YORK_TAXI_Job`) is installed, follow the steps below to run 
 
    Leave the `run_id` parameter with its default value `{{job.run_id}}` — Databricks will automatically insert the current run identifier.
 
-4. Click **Run now**.
+   If you want to reset checkpoint and process any data one more time - set `reset_checkpoint` to True, otherwise leave default value (False)
+
+5. Click **Run**.
 
 ### Step 3: Monitor the pipeline run
 
-1. After clicking **Run now**, you will be redirected to the run view.
+1. After clicking **Run**, you will be redirected to the run view.
 2. You will see a graph of three tasks:
 
    ```
@@ -239,7 +241,7 @@ You can configure email notifications about the job run status either in the job
 
 ### Setting notifications in the UI
 
-1. Open the **NEW_YORK_TAXI_Job** job in **Workflows → Jobs**.
+1. Open the **NEW_YORK_TAXI_Job** job in **Workflows → Jobs & Pipelines**.
 2. Click **Edit** (if the job is read-only, click **Clone** first).
 3. In the left panel, find the **Job details → Notifications** section.
 4. Click **Add notification**.
