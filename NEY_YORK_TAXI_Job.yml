@@ -30,4 +30,6 @@ resources:
           default: ""
         - name: run_id
           default: "{{job.run_id}}"
+        - name: reset_checkpoint
+          default: "False"
       performance_target: PERFORMANCE_OPTIMIZED
